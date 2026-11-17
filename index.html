@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bayroqlar bellashuvi</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--b1:#e4f4fa;--b2:#e3f6e8;--tx:#10243a;--mut:#4b6178;--card:rgba(255,255,255,.75);--bd:rgba(16,36,58,.14);--ac:#0099B5;--gr:#1EB53A;--rd:#CE1126;--gold:#b07d00;--okbg:rgba(30,181,58,.18);--nobg:rgba(206,17,38,.14);--pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%230099B5' stroke-opacity='.16'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#071a33;--b2:#06302f;--tx:#f4f7fb;--mut:#a9bdd3;--card:rgba(255,255,255,.08);--bd:rgba(255,255,255,.17);--gold:#f5c451;--okbg:rgba(30,181,58,.28);--nobg:rgba(206,17,38,.3);--pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E")}}
+:root[data-theme="dark"]{--b1:#071a33;--b2:#06302f;--tx:#f4f7fb;--mut:#a9bdd3;--card:rgba(255,255,255,.08);--bd:rgba(255,255,255,.17);--gold:#f5c451;--okbg:rgba(30,181,58,.28);--nobg:rgba(206,17,38,.3);--pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.07'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E")}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;min-height:100vh;color:var(--tx);background:var(--pat),linear-gradient(160deg,var(--b1),var(--b2));background-attachment:fixed;font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+.w{max-width:460px;margin:0 auto;padding:18px 16px 28px}
+h1,h2,.num{font-family:Unbounded,system-ui,sans-serif;margin:0}
+h1{font-size:28px;line-height:1.15;text-align:center;background:linear-gradient(90deg,var(--ac),var(--gr));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:20px;text-align:center;margin-bottom:14px}
+.glass{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:18px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,40,80,.12)}
+.over{text-align:center;color:var(--gold);font-weight:700;letter-spacing:.06em;font-size:12px;text-transform:uppercase;margin:6px 0 10px}
+.uz{margin:16px auto;width:min(86%,330px);filter:drop-shadow(0 14px 18px rgba(0,0,0,.3));animation:wv 4s ease-in-out infinite;transform-origin:left center}
+.uz svg{width:100%;display:block;border-radius:4px}
+@keyframes wv{0%,100%{transform:perspective(600px) rotateY(-7deg) skewY(-1deg)}50%{transform:perspective(600px) rotateY(5deg) skewY(1.5deg)}}
+.txt{text-align:center;color:var(--mut);margin:10px 0 16px}
+.cols{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.cols span{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--card);border:1px solid var(--bd)}
+.cols i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+button,input{font:inherit;color:var(--tx)}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:14px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--ac),var(--gr));box-shadow:0 8px 20px rgba(0,153,181,.35);cursor:pointer;min-height:50px}
+.btn:active{transform:scale(.98)}
+.ghost{background:var(--card);color:var(--tx);border:1px solid var(--bd);box-shadow:none;margin-top:10px}
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}
+input{width:100%;border:2px solid var(--bd);background:var(--card);border-radius:14px;padding:12px 14px;outline:0}
+#n0{border-left:6px solid var(--ac)}#n1{border-left:6px solid var(--rd)}
+input:focus{border-color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.chip{border:1px solid var(--bd);background:var(--card);border-radius:99px;padding:6px 12px;font-size:14px;cursor:pointer}
+.seg{display:flex;gap:8px;margin-bottom:16px}
+.seg button{flex:1;border:2px solid var(--bd);background:var(--card);border-radius:12px;padding:10px;font-weight:700;cursor:pointer}
+.seg button.on{border-color:var(--gr);background:var(--okbg)}
+.sb{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.tm{border-radius:18px;padding:10px 12px;border:2px solid transparent;background:var(--card);opacity:.6;transition:.25s;overflow:hidden}
+.tm b{display:block;font-size:13px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.tm .num{font-size:26px}
+.tm.t0{--c:var(--ac)}.tm.t1{--c:var(--rd)}
+.tm.act{opacity:1;border-color:var(--c);box-shadow:0 0 22px -2px var(--c);transform:scale(1.03)}
+.tm .num{color:var(--c)}
+.turn{text-align:center;font-weight:700;margin:2px 0 10px}
+.bar{height:6px;border-radius:3px;background:var(--bd);overflow:hidden;margin-bottom:12px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--gr));transition:width .4s}
+.fl{display:flex;justify-content:center;align-items:center;height:150px;border-radius:16px;margin-bottom:12px;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 70%)}
+.fl .e{font-size:112px;line-height:1;animation:fl 3s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(0,0,0,.3));font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.fl svg{width:170px;border-radius:4px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.3));animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--gold);color:#fff;margin-bottom:6px}
+#q{font-weight:700;margin:0 0 12px}
+.o{display:block;width:100%;text-align:left;border:2px solid var(--bd);background:var(--card);border-radius:14px;min-height:50px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-weight:600}
+.o.ok{border-color:var(--gr);background:var(--okbg)}.o.no{border-color:var(--rd);background:var(--nobg)}
+#note{min-height:22px;margin:6px 0 0;font-weight:600}
+.big{font-family:Unbounded,sans-serif;font-size:22px;text-align:center;margin:6px 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.res div{text-align:center;border-radius:16px;padding:12px 6px;background:var(--card);border:2px solid var(--bd)}
+.res .win{border-color:var(--gold);box-shadow:0 0 22px -4px var(--gold)}
+.res .num{font-size:34px}
+.cf{position:fixed;top:-20px;width:9px;height:14px;border-radius:2px;animation:cf linear forwards;z-index:9;pointer-events:none}
+@keyframes cf{to{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+<div class="w">
+
+<section id="s-intro">
+<p class="over">18-noyabr · Davlat bayrogʻi kuni</p>
+<h1>Bayroqlar<br>bellashuvi</h1>
+<div class="uz" id="uzf"></div>
+<div class="cols"><span><i style="background:#0099B5"></i>osmon</span><span><i style="background:#fff;border:1px solid #999"></i>tinchlik</span><span><i style="background:#1EB53A"></i>tabiat</span><span><i style="background:#CE1126"></i>hayot</span></div>
+<div class="glass">
+<p class="txt" style="margin-top:0">1991-yil 18-noyabrda Oʻzbekiston Respublikasi Davlat bayrogʻi qabul qilingan. Bugun uning bayrami sharafiga butun dunyo bayroqlari bilan bellashamiz: ikki jamoa, bir gʻolib!</p>
+<button class="btn" onclick="go('s-set')">Bellashuvni boshlash 🚩</button>
+</div>
+</section>
+
+<section id="s-set" hidden>
+<h2>Jamoalarni tuzing</h2>
+<div class="glass">
+<label for="n0">1-jamoa nomi</label><input id="n0" maxlength="18" placeholder="Masalan: Burgutlar" autocomplete="off">
+<label for="n1">2-jamoa nomi</label><input id="n1" maxlength="18" placeholder="Masalan: Sherlar" autocomplete="off">
+<label>Tezkor tanlash</label><div class="chips" id="chips"></div>
+<label>Savollar soni</label>
+<div class="seg" id="seg"><button data-n="10" class="on">10</button><button data-n="16">16</button><button data-n="20">20</button></div>
+<button class="btn" onclick="begin()">Oʻyinni boshlash</button>
+<button class="btn ghost" onclick="go('s-intro')">Orqaga</button>
+</div>
+</section>
+
+<section id="s-game" hidden>
+<div class="sb"><div class="tm t0" id="tm0"><b></b><span class="num">0</span></div><div class="tm t1" id="tm1"><b></b><span class="num">0</span></div></div>
+<div class="bar"><i id="fill"></i></div>
+<p class="turn" id="turn"></p>
+<div class="glass">
+<div class="fl" id="fl"></div>
+<span class="tag" id="tag" hidden></span>
+<p id="q"></p>
+<div id="opts"></div>
+<p id="note"></p>
+<button class="btn" id="next" hidden></button>
+</div>
+</section>
+
+<section id="s-end" hidden>
+<div class="glass">
+<div style="font-size:54px;text-align:center">🏆</div>
+<p class="big" id="win"></p>
+<div class="res"><div id="r0"><b></b><span class="num"></span></div><div id="r1"><b></b><span class="num"></span></div></div>
+<button class="btn" onclick="begin()">Qayta oʻynash</button>
+<button class="btn ghost" onclick="go('s-set')">Jamoalarni oʻzgartirish</button>
+</div>
+</section>
+
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const sh=a=>{for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a};
+const star=(x,y,r)=>{const p=[];for(let i=0;i<10;i++){const rr=i%2?r*.382:r,a=Math.PI*i/5-Math.PI/2;p.push((x+rr*Math.cos(a)).toFixed(1)+','+(y+rr*Math.sin(a)).toFixed(1))}return '<polygon points="'+p.join(' ')+'" fill="#fff"/>'};
+let stars='';[[4.7,[21,24.5,28]],[8.2,[19.2,22.7,26.2,29.7]],[11.7,[17.4,20.9,24.4,27.9,31.4]]].forEach(r=>r[1].forEach(x=>stars+=star(x,r[0],1.5)));
+$('uzf').innerHTML='<svg viewBox="0 0 100 50" role="img" aria-label="Oʻzbekiston bayrogʻi"><rect width="100" height="16.4" fill="#0099B5"/><rect y="16.4" width="100" height="1" fill="#CE1126"/><rect y="17.4" width="100" height="15.2" fill="#fff"/><rect y="32.6" width="100" height="1" fill="#CE1126"/><rect y="33.6" width="100" height="16.4" fill="#1EB53A"/><circle cx="9" cy="8.2" r="5.2" fill="#fff"/><circle cx="10.8" cy="8.2" r="4.4" fill="#0099B5"/>'+stars+'</svg>';
+const emo=c=>c.replace(/./g,x=>String.fromCodePoint(127397+x.charCodeAt(0)));
+const CUR='FR Fransiya|IT Italiya|IE Irlandiya|DE Germaniya|NL Niderlandiya|RU Rossiya|BE Belgiya|RO Ruminiya|HU Vengriya|AT Avstriya|PL Polsha|UA Ukraina|LT Litva|EE Estoniya|BG Bolgariya|LU Lyuksemburg|NG Nigeriya|ML Mali|PE Peru|CI Kot-d’Ivuar|ID Indoneziya|YE Yaman|CO Kolumbiya|TH Tailand|JP Yaponiya|BD Bangladesh|IN Hindiston|GH Gana|CZ Chexiya|CH Shveytsariya|SE Shvetsiya|DK Daniya|FI Finlyandiya|NO Norvegiya|TR Turkiya|GB Buyuk Britaniya|US AQSh|CA Kanada|BR Braziliya|AR Argentina|MX Meksika|CN Xitoy|KR Janubiy Koreya|KZ Qozogʻiston|KG Qirgʻiziston|TJ Tojikiston|TM Turkmaniston|AZ Ozarbayjon|AF Afgʻoniston|EG Misr|SA Saudiya Arabistoni|IR Eron|PK Pokiston|ES Ispaniya|PT Portugaliya|GR Gretsiya|AU Avstraliya|NZ Yangi Zelandiya|ZA Janubiy Afrika|MA Marokash|VN Vetnam|SG Singapur|CU Kuba|CL Chili|JM Yamayka|KE Keniya|ET Efiopiya'.split('|').map(x=>({n:x.slice(3),h:'<span class="e">'+emo(x.slice(0,2))+'</span>'}));
+const tri=c=>'<svg viewBox="0 0 60 40">'+c.map((k,i)=>'<rect y="'+(40*i/c.length)+'" width="60" height="'+(40/c.length+.3)+'" fill="'+k+'"/>').join('')+'</svg>';
+const HIS=[{n:'Germaniya imperiyasi',e:'1871–1918',h:tri(['#000','#fff','#DD0000'])},{n:'Rossiya imperiyasi',e:'1858–1883',h:tri(['#000','#FDDA24','#fff'])},{n:'Liviya',e:'1977–2011',h:tri(['#239E46'])}];
+const NAMES=['Burgutlar','Sherlar','Qoplonlar','Yulduzlar','Bahodirlar','Temurbeklar','Chaqmoqlar','Sohibqironlar'];
+let T=[{n:'',s:0},{n:'',s:0}],Q=[],i=0,N=10,lock=false,last=0;
+const go=id=>{['s-intro','s-set','s-game','s-end'].forEach(s=>$(s).hidden=s!==id);scrollTo(0,0)};
+$('chips').innerHTML=NAMES.map(n=>'<button class="chip">'+n+'</button>').join('');
+$('chips').onclick=e=>{if(e.target.className!=='chip')return;$('n'+last).value=e.target.textContent;last=1-last;$('n'+last).focus()};
+$('n0').onfocus=()=>last=0;$('n1').onfocus=()=>last=1;
+$('seg').onclick=e=>{if(!e.target.dataset.n)return;N=+e.target.dataset.n;[...$('seg').children].forEach(b=>b.classList.toggle('on',b===e.target))};
+function begin(){
+  const a=($('n0').value.trim()||'1-jamoa'),b0=($('n1').value.trim()||'2-jamoa');
+  T=[{n:a,s:0},{n:a.toLowerCase()===b0.toLowerCase()?b0+' (2)':b0,s:0}];
+  const hs=sh(HIS.slice()).slice(0,N>10?3:2),cs=sh(CUR.slice());
+  const main=cs.slice(0,N-1-hs.length);
+  const mk=(f,pool,hist,pts)=>({f,hist,pts,o:sh(sh(pool.filter(x=>x.n!==f.n)).slice(0,3).concat([f]))});
+  Q=sh(main.map(f=>mk(f,CUR,0,1)).concat(hs.map(f=>mk(f,HIS.concat(sh(CUR.slice()).slice(0,4)),1,1))));
+  const nb=['Qozogʻiston','Qirgʻiziston','Tojikiston','Turkmaniston','Afgʻoniston','Ozarbayjon'].map(n=>({n}));
+  Q.push(mk({n:'Oʻzbekiston',h:'<span class="e">'+emo('UZ')+'</span>'},nb,0,2));
+  Q[Q.length-1].fin=1;
+  i=0;go('s-game');show();
+}
+function board(){[0,1].forEach(k=>{const t=$('tm'+k);t.children[0].textContent=T[k].n;t.children[1].textContent=T[k].s;t.classList.toggle('act',i%2===k)})}
+function show(){
+  const q=Q[i];lock=false;board();
+  $('turn').textContent='Navbat: '+T[i%2].n;
+  $('fill').style.width=(i/Q.length*100)+'%';
+  $('fl').innerHTML=q.f.h;
+  $('tag').hidden=!(q.hist||q.fin);
+  $('tag').textContent=q.fin?'🎉 Bayram savoli · 2 ball':'Tarixiy bayroq';
+  $('q').textContent=q.hist?'Bu bayroq endi ishlatilmaydi. U qaysi davlatga tegishli boʻlgan?':'Bu qaysi davlat bayrogʻi?';
+  $('note').textContent='';$('next').hidden=true;
+  $('opts').innerHTML='';
+  q.o.forEach(o=>{const b=document.createElement('button');b.className='o';b.textContent=o.n;b.onclick=()=>pick(b,o);$('opts').appendChild(b)});
+}
+function pick(btn,o){
+  if(lock)return;lock=true;
+  const q=Q[i],ok=o.n===q.f.n;
+  if(ok)T[i%2].s+=q.pts;
+  [...$('opts').children].forEach(b=>{b.disabled=true;if(b.textContent===q.f.n)b.classList.add('ok');else if(b===btn)b.classList.add('no')});
+  board();
+  $('note').textContent=(ok?'Toʻgʻri! +'+q.pts+' ball 🎉':'Xato! Toʻgʻri javob: '+q.f.n)+(q.hist?' ('+q.f.e+' yillarda ishlatilgan)':'');
+  $('next').textContent=i===Q.length-1?'Natijalarni koʻrish':'Keyingi savol';$('next').hidden=false;
+}
+$('next').onclick=()=>{if(i===Q.length-1)end();else{i++;show()}};
+function end(){
+  go('s-end');
+  const d=T[0].s-T[1].s;
+  $('win').textContent=d===0?'Durang! Ikkala jamoa ham zoʻr!':'Gʻolib: '+T[d>0?0:1].n+'!';
+  [0,1].forEach(k=>{const r=$('r'+k);r.children[0].textContent=T[k].n;r.children[1].textContent=T[k].s;r.classList.toggle('win',d===0||(d>0?0:1)===k)});
+  const cl=['#0099B5','#fff','#1EB53A','#CE1126','#f5c451'];
+  for(let k=0;k<44;k++){const c=document.createElement('i');c.className='cf';c.style.cssText='left:'+Math.random()*100+'%;background:'+cl[k%5]+';animation-duration:'+(2+Math.random()*2.5)+'s;animation-delay:'+Math.random()*.8+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),5500)}
+}
+</script>
+</body>
+</html>
